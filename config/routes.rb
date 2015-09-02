@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
+
+  resources :items
+
   devise_for :users
 
   resources :searches

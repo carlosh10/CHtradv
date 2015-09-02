@@ -1,7 +1,43 @@
 Search Results:
 
-<ul>
-  <% @items.each do |i| %>
-    <li> <%= i %></li>
-  <% end %>
-</ul>
+
+
+<div class="row">
+
+  <div class="col-md-3">
+    <%= form_for @new_search do |f| %>
+
+      <div class="row">
+        <%= f.text_field :query, value: @search.query, disabled: true %>
+      </div>
+      <ul>
+        <% @ncms.each do |k,v| %>
+          <li><%= k %> (<%= v %>) 
+            <%= f.check_box :ncm,{multiple: true}, k %>
+          </li>
+        <% end %>
+      </ul>
+      <div class="row">
+        <%= f.submit %>
+      </div>
+      
+    <% end %>
+  </div>
+
+  <div class="col-md-9">
+    <% @items.each do |i| %>
+      <div class="row " >
+        <div class="col-md-8 card" >
+          <h3><%= i.descricao_detalhada_produto %></h3>
+          <%= link_to "Drill down", item_path(i.id) %>
+          <p>Quantidade: <%= i.quantidade_comercializada_produto %> <p>
+          <p>CIF Unitario: <%= i.CIF_unitario %> <p>
+          <p>NCM: <%= i.ncm %> <p>
+          <p>País Origem: <%= i.paisOrigem %> <p>
+        </div>
+      </div>
+      <br/>
+
+    <% end %>
+  </div>
+</div>

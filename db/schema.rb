@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826034811) do
+ActiveRecord::Schema.define(version: 20150902134204) do
 
   create_table "searches", force: :cascade do |t|
     t.string   "query"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150826034811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "ip"
+    t.string   "ncm"
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
